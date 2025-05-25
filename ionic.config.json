@@ -1,0 +1,7 @@
+{
+  "name": "evaluacion1-jvmm",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
