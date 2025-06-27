@@ -7,6 +7,7 @@ import { ToastController } from '@ionic/angular';
   standalone: false,
   selector: 'app-mi-contacto',
   templateUrl: './mi-contacto.page.html',
+  
   styleUrls: ['./mi-contacto.page.scss'],
 })
 export class MiContactoPage implements OnInit {
