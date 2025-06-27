@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mi Información Personal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding info-content">
+  <div class="container">
+    <ion-avatar class="avatar">
+      <img src="assets/imgs/josevicente.jpg" alt="Foto de Jose V. Malave" />
+    </ion-avatar>
+    <h2>Jose V. Malave</h2>
+    <p class="descripcion">
+      Hola, soy José Vicente, nací en Caracas, Venezuela. La tecnología, ¡es mi pasión! 
+      Ahora mismo, estudio Ingeniería en Informática en la UNETI, donde aprendo un sin fin de cosas del mundo digital. 
+    </p>
+  </div>
+  <br/>
+    <h3><ion-icon name="chatbubble-ellipses-outline"></ion-icon> ¿Deseas hablar conmigo? </h3>
+    <br/>
+    <!-- Formulario reactivo, visible solo si no se abrió el chat -->
+    <form [formGroup]="chatForm" (ngSubmit)="abrirChat()" *ngIf="!mostrarChat">
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input formControlName="userName"></ion-input>
+        <ion-note color="danger" *ngIf="chatForm.get('userName')?.invalid && (chatForm.get('userName')?.dirty || chatForm.get('userName')?.touched)">
+          El nombre es requerido y debe tener al menos 3 caracteres.
+        </ion-note>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label position="floating">Teléfono Móvil</ion-label>
+        <ion-input formControlName="userPhone" type="tel"></ion-input>
+        <ion-note color="danger" *ngIf="chatForm.get('userPhone')?.invalid && (chatForm.get('userPhone')?.dirty || chatForm.get('userPhone')?.touched)">
+          El teléfono es requerido y debe comenzar con 0 y tener 11 dígitos.
+        </ion-note>
+      </ion-item> -->
+      <ion-button expand="block" type="submit" [disabled]="chatForm.invalid" color="success">
+        <ion-icon slot="start" name="chatbubble-ellipses-outline"></ion-icon>
+        HABLEMOS!
+      </ion-button>
+    </form>
+
+    <!-- Chat, visible solo si se abrió -->
+    <div class="chat-content" *ngIf="mostrarChat">
+      <div class="chat-header">
+        <span>Chat con José V. Malave</span>
+        <ion-button fill="clear" size="small" (click)="cerrarChat()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="chat-body">
+        <div *ngFor="let msg of messages" [ngClass]="{'sent': msg.sent, 'received': !msg.sent}" class="chat-message">
+          <div class="sender">{{ msg.sender }}</div>
+          <p>{{ msg.text }}</p>
+          <span class="time">{{ msg.time }}</span>
+          <span  *ngIf="msg.seen && msg.sent" class="seen-indicator">✓ Visto</span>
+        </div>
+      </div>
+      <div class="typing-indicator" *ngIf="isTyping">
+        <ion-icon name="ellipsis-horizontal-outline"></ion-icon> Escribiendo...
+      </div>
+      <form (ngSubmit)="enviarMensaje()" class="chat-input">
+        <ion-input [(ngModel)]="nuevoMensaje" name="mensaje" placeholder="Escribe un mensaje..." autocomplete="off"></ion-input>
+        <ion-button type="submit" [disabled]="!nuevoMensaje.trim()" color="primary" fill="solid">
+          <ion-icon slot="icon-only" name="send"></ion-icon>
+        </ion-button>
+      </form>
+    </div>
+  <!-- <form [formGroup]="chatForm" (ngSubmit)="guardarDatos()">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="userName"></ion-input>
+      <ion-note color="danger" *ngIf="chatForm.get('userName')?.invalid && (chatForm.get('userName')?.dirty || chatForm.get('userName')?.touched)">
+        El nombre es requerido y debe tener al menos 3 caracteres.
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Teléfono Móvil</ion-label>
+      <ion-input formControlName="userPhone" type="tel"></ion-input>
+      <ion-note  class="ion-note" *ngIf="chatForm.get('userPhone')?.invalid && (chatForm.get('userPhone')?.dirty || chatForm.get('userPhone')?.touched)">
+        El teléfono es requerido y debe comenzar con 0 y tener 11 digitos.
+      </ion-note>
+    </ion-item>
+
+
+    <ion-button class="ion-padding" mode="ios" expand="block" type="submit" [disabled]="chatForm.invalid" color="success"strong="true"><ion-icon slot="start" name="chatbubble-ellipses-outline" size="large"></ion-icon>HABLEMOS!</ion-button>
+  </form> -->
+</ion-content>

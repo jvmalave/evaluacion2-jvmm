@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mi Contacto </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="title">
+  <h2>Soliciud de Servicio</h2>
+    <p class="descripcion">
+     Dime tus requerimientos y seguro tedré una solución para tí. 
+    </p>
+</div>
+
+<form [formGroup]="solicitudForm" (ngSubmit)="enviarFormulario()">
+  <ion-item>
+    <ion-label position="floating">Nombre completo</ion-label>
+    <ion-input formControlName="nombre"></ion-input>
+  </ion-item>
+  <ion-note color="danger" *ngIf="solicitudForm.get('nombre')?.invalid && (solicitudForm.get('nombre')?.touched)">
+    <span *ngIf="solicitudForm.get('nombre')?.errors?.['required']">El nombre es obligatorio.</span>
+    <span *ngIf="solicitudForm.get('nombre')?.errors?.['minlength']">Mínimo 3 caracteres.</span>
+  </ion-note>
+
+  <ion-item>
+    <ion-label position="floating">Teléfono móvil</ion-label>
+    <ion-input formControlName="telefono" type="tel"></ion-input>
+  </ion-item>
+  <ion-note color="danger" *ngIf="solicitudForm.get('telefono')?.invalid && (solicitudForm.get('telefono')?.touched)">
+    <span *ngIf="solicitudForm.get('telefono')?.errors?.['required']">El teléfono es obligatorio.</span>
+    <span *ngIf="solicitudForm.get('telefono')?.errors?.['pattern']">Debe comenzar con 0 y tener 11 dígitos.</span>
+  </ion-note>
+
+  <ion-item>
+    <ion-label position="floating">Correo electrónico</ion-label>
+    <ion-input formControlName="email" type="email"></ion-input>
+  </ion-item>
+  <ion-note color="danger" *ngIf="solicitudForm.get('email')?.invalid && (solicitudForm.get('email')?.touched)">
+    <span *ngIf="solicitudForm.get('email')?.errors?.['required']">El email es obligatorio.</span>
+    <span *ngIf="solicitudForm.get('email')?.errors?.['email']">Email no válido.</span>
+  </ion-note>
+
+  <ion-item>
+    <ion-label>Tipo de aplicación</ion-label>
+    <ion-select formControlName="tipoApp" placeholder="Seleccione">
+      <ion-select-option *ngFor="let tipo of tiposApp" [value]="tipo">{{ tipo }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-note color="danger" *ngIf="solicitudForm.get('tipoApp')?.invalid && (solicitudForm.get('tipoApp')?.touched)">
+    Debe seleccionar un tipo de aplicación.
+  </ion-note>
+
+  <ion-item>
+    <ion-label position="floating">Descripción breve del proyecto</ion-label>
+    <ion-textarea formControlName="descripcion" rows="4"></ion-textarea>
+  </ion-item>
+  <ion-note color="danger" *ngIf="solicitudForm.get('descripcion')?.invalid && (solicitudForm.get('descripcion')?.touched)">
+    <span *ngIf="solicitudForm.get('descripcion')?.errors?.['required']">La descripción es obligatoria.</span>
+    <span *ngIf="solicitudForm.get('descripcion')?.errors?.['minlength']">Mínimo 20 caracteres.</span>
+  </ion-note>
+  <ion-item>
+    <ion-label>Presupuesto estimado (opcional)</ion-label>
+    <ion-select formControlName="presupuesto" placeholder="Seleccione">
+      <ion-select-option *ngFor="let presupuesto of presupuestos" [value]="presupuesto">{{ presupuesto }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-checkbox slot="start" formControlName="aceptaTerminos"></ion-checkbox>
+    <ion-label>Acepto los términos y condiciones</ion-label>
+  </ion-item>
+  <ion-note color="danger" *ngIf="solicitudForm.get('aceptaTerminos')?.invalid && (solicitudForm.get('aceptaTerminos')?.touched)">
+    Debe aceptar los términos y condiciones.
+  </ion-note>
+
+  <ion-button expand="block" type="submit" [disabled]="solicitudForm.invalid" color="success">
+    Enviar solicitud
+  </ion-button>
+
+</form>
+
+

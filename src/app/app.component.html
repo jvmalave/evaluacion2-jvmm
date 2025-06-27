@@ -1,3 +1,31 @@
+<ion-menu side="start" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Mi App</ion-title>
+      <ion-buttons slot="end" class="theme-toggle">
+        <ion-toggle aria-label="Light toggle" color="light"  (ionChange)="toggleDarkMode()" [checked]="darkMode"></ion-toggle>
+        <ion-icon slot="end" name="sunny-outline" color="warning"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="menu-content">
+    <div class="user-info">
+      <ion-avatar>
+        <img src="assets/imgs/jose-vicente.png" alt="Avatar">
+      </ion-avatar>
+      <h3>José V. Malavé</h3>
+    </div>
+    <ion-list>
+      <ion-menu-toggle auto-hide="true" *ngFor="let item of menuItems">
+        <ion-item [routerLink]="item.url" routerDirection="root" class="menu-item">
+          <ion-icon slot="start" [name]="item.icon"></ion-icon>
+          <ion-label>{{item.title}}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-app>

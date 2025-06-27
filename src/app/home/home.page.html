@@ -1,20 +1,22 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content [fullscreen]="true">
+  <ion-content class="ion-padding home-content">
+  <div class="container">
+    <h1>Bienvenidos a mi App</h1>
+    <img src="assets/imgs/uneti-logo.png" alt="UNETI Logo" class="logo" />
+    <h2>Universidad Nacional Experimental de la Telecomunicaciones e Informática</h2>
+    <p class="actividad">Actividad Evaluativa # 1: Aplicación de conceptos del frameware IONIC</p>
+    <div class="desarrollador">
+      <p><strong>Desarrollador:</strong> Jose V. Malave</p>
+    </div>
   </div>
 </ion-content>

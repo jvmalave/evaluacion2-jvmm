@@ -1,27 +1,100 @@
-#container {
-  text-align: center;
+.home-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  .container {
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: var(--background-card);
+    box-shadow: var(--shadow-card);
+    color: var(--text-color);
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+  }
+
+  .actividad {
+    font-style: italic;
+    margin-bottom: 25px;
+    font-size: 1rem;
+  }
+
+  .desarrollador p {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .logo {
+    max-width: 100%;      /* No excede el ancho del contenedor */
+    height: auto;         /* Mantiene la proporción original */
+    display: block;
+    margin: 0 auto 20px;  /* Centrado horizontal y espacio abajo */
+    filter: var(--logo-filter);
+}
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 400px) {
+  .home-content .container {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .logo {
+    max-width: 150px;  /* Tamaño más pequeño en móviles */
+    margin-bottom: 15px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .actividad, .desarrollador p {
+    font-size: 0.9rem;
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+/* Ajustes para pantallas grandes */
+@media (min-width: 768px) {
+  .home-content .container {
+    max-width: 200vh;
+    padding: 30px;
+  }
 
-  color: #8c8c8c;
+  .logo {
+    max-width: 250px;  /* Tamaño mayor en tablets y escritorio */
+    margin-bottom: 30px;
+  }
 
-  margin: 0;
-}
+  h1 {
+    font-size: 2.5rem;
+  }
 
-#container a {
-  text-decoration: none;
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .actividad, .desarrollador p {
+    font-size: 1.1rem;
+  }
 }

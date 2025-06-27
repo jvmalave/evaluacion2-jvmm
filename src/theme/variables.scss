@@ -1,2 +1,42 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+:root {
+  --ion-background-color: #ffffff;
+  --ion-text-color: #000000;
+  --menu-background: linear-gradient(135deg, #3b4152, #f2f0f5);
+  --menu-text: #333333;
+  --logo-filter: none;
+  --background-card: #ffffff;
+  --text-color: #222222;
+  --text-secondary: #555555;
+  --border-avatar: #3880ff;
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --bubble-sent: #f9f0f0;
+  --bubble-received: #d2d1d1;
+  --text-received: #222222;
+  --text-sent: #3b3939;
+  --background-chat: #f5f5f5;
+  --ion-note:  var(--ion-color-danger);
+
+
+
+}
+
+.dark-theme {
+  --ion-background-color: #121212;
+  --ion-text-color: #ffffff;
+  --menu-background: linear-gradient(135deg, #121212, #333334);
+  --menu-text: #ffffff;
+  --logo-filter: brightness(0) invert(1);
+  --background-card: #2c2c2c;
+  --text-color: #e0e0e0;
+  --text-secondary: #bbbbbb;
+  --border-avatar: #66aaff;
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.7);
+  --bubble-sent: #383737;
+  --bubble-received: #232222;
+  --text-sent: #f0f0f0;
+  --text-received: #cccccc;
+  --background-chat: #1e1e1e;
+  --ion-note: #ffffff;
+
+}
+
